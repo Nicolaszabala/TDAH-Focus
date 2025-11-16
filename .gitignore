@@ -1,0 +1,111 @@
+# ============================================
+# GITIGNORE PARA ENTREGA FINAL TFG
+# Universidad Siglo 21 - TDAH Focus App
+# ============================================
+
+# ============================================
+# ARCHIVOS DE CLAUDE CODE (NO INCLUIR)
+# ============================================
+.claude/
+CLAUDE.md
+context/
+
+# ============================================
+# ARCHIVOS DE PLANIFICACIÓN Y DESARROLLO
+# (NO INCLUIR EN REPO DE ENTREGA)
+# ============================================
+PLAN_*.md
+PROGRESO.md
+FASES_PENDIENTES.md
+MANUAL_TESTS.md
+TESTING_*.md
+INFORME_AUDITORIA_TFG.md
+GUIA_*.md
+SECCION_*.md
+SECCIONES_*.md
+
+# ============================================
+# NODE_MODULES Y DEPENDENCIAS
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ============================================
+# EXPO Y REACT NATIVE
+# ============================================
+.expo/
+.expo-shared/
+dist/
+web-build/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# ============================================
+# ANDROID
+# ============================================
+adhd-focus-app/android/app/build/
+adhd-focus-app/android/build/
+adhd-focus-app/android/.gradle/
+adhd-focus-app/android/local.properties
+adhd-focus-app/android/app/debug/
+adhd-focus-app/android/app/release/
+adhd-focus-app/android/.idea/
+adhd-focus-app/android/*.iml
+adhd-chatbot-backend/android/
+
+# ============================================
+# iOS (si se usa en futuro)
+# ============================================
+adhd-focus-app/ios/Pods/
+adhd-focus-app/ios/build/
+adhd-focus-app/ios/*.xcworkspace
+adhd-focus-app/ios/*.xcuserdata
+
+# ============================================
+# BACKEND - ARCHIVOS SENSIBLES
+# ============================================
+adhd-chatbot-backend/.env
+adhd-chatbot-backend/node_modules/
+adhd-chatbot-backend/dist/
+adhd-chatbot-backend/logs/
+adhd-chatbot-backend/*.log
+
+# ============================================
+# EDITORES E IDEs
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.log
+
+# ============================================
+# ARCHIVOS TEMPORALES
+# ============================================
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# ============================================
+# ARCHIVOS DE SISTEMA
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================
+# KEEP README.md PRINCIPAL
+# ============================================
+# README.md en raíz SÍ se incluye (documentación del proyecto)
