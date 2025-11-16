@@ -27,7 +27,7 @@ const USE_LOCAL_BACKEND = false; // Set to true only if running backend locally 
 
 const API_URL = USE_LOCAL_BACKEND
   ? 'http://localhost:3000/api/chat' // Development (local backend - only for emulator)
-  : 'https://adhd-chatbot-api.onrender.com/api/chat'; // Production (Render.com)
+  : 'https://tdah-focus.onrender.com'; // Production (Render.com)
 
 const API_TIMEOUT = 10000; // 10 seconds
 
