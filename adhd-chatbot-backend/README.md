@@ -99,24 +99,32 @@ Esto instalará:
 
 #### 3. Configurar Variables de Entorno
 
+**IMPORTANTE PARA EVALUADORES:** El archivo `.env.example` ya incluye un token de Hugging Face funcional.
+
 Crear archivo `.env` desde el template:
 
 ```bash
 cp .env.example .env
 ```
 
-Editar `.env` y configurar:
+Edita el archivo `.env` y reemplaza `TU_TOKEN_AQUI` con el token de Hugging Face proporcionado en el README principal del repositorio.
+
+El archivo `.env` debe quedar así:
 
 ```env
 PORT=3000
-NODE_ENV=development
-HUGGING_FACE_API_KEY=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+NODE_ENV=production
+HUGGING_FACE_API_KEY=<token_proporcionado_en_readme>
 MAX_REQUESTS_PER_MINUTE=20
 CACHE_TTL_SECONDS=3600
-ALLOWED_ORIGINS=http://localhost:19006
+ALLOWED_ORIGINS=http://localhost:19006,exp://192.168.1.0:19000
 ```
 
-#### 4. Obtener API Key de Hugging Face
+**Ver el README principal del repositorio para obtener el token funcional de demostración.**
+
+#### 4. (Opcional) Obtener tu Propio API Key de Hugging Face
+
+Si deseas usar tu propio token:
 
 1. Ir a https://huggingface.co/
 2. Registrarse (gratis)
@@ -125,7 +133,7 @@ ALLOWED_ORIGINS=http://localhost:19006
 5. Nombre: `adhd-chatbot-api`
 6. Role: `read`
 7. Copiar el token (empieza con `hf_`)
-8. Pegarlo en `.env` como `HUGGING_FACE_API_KEY`
+8. Reemplazar el valor en `.env` como `HUGGING_FACE_API_KEY`
 
 #### 5. Iniciar Servidor en Desarrollo
 

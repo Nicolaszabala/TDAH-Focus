@@ -124,13 +124,33 @@ cd adhd-chatbot-backend
 # Instalar dependencias
 npm install
 
-# Crear archivo .env (opcional - la API key ya está incluida en el código)
+# Crear archivo .env desde el template
 cp .env.example .env
+
+# IMPORTANTE: Editar .env y configurar el token de Hugging Face
+# Ver instrucciones abajo para obtener un token gratuito
 
 # Iniciar servidor
 npm start
 # Servidor corriendo en http://localhost:3000
 ```
+
+**🔑 Configuración del Token de Hugging Face:**
+
+Para que el asistente conversacional funcione, necesitas un token gratuito de Hugging Face:
+
+1. Ir a https://huggingface.co/join y crear una cuenta gratuita
+2. Una vez registrado, ir a https://huggingface.co/settings/tokens
+3. Click en "New token"
+4. Configurar:
+   - Name: `adhd-chatbot-demo`
+   - Type: `Read`
+5. Click "Generate token" y copiar el token (comienza con `hf_`)
+6. Abrir el archivo `.env` que creaste antes
+7. Reemplazar `TU_TOKEN_AQUI` con tu token
+8. Guardar el archivo
+
+El proceso toma menos de 2 minutos y el tier gratuito de Hugging Face es suficiente para evaluar el proyecto.
 
 ### 3. Configurar la Aplicación Móvil
 
