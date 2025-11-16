@@ -317,12 +317,12 @@ CACHE_TTL_SECONDS = 3600
 
 ### Paso 3: Verificar Deployment
 
-Render asignará una URL: `https://adhd-chatbot-api.onrender.com`
+Render asignará una URL: `https://tdah-focus.onrender.com`
 
 Verificar health check:
 
 ```bash
-curl https://adhd-chatbot-api.onrender.com/health
+curl https://tdah-focus.onrender.com/health
 ```
 
 ### Paso 4: Configurar Auto-Deploy
@@ -342,7 +342,7 @@ Para deploy manual:
 💡 **Solución para cold starts**:
 Implementar ping service (cron job cada 10 min):
 - Usar cron-job.org (gratis)
-- URL a pingear: `https://adhd-chatbot-api.onrender.com/health`
+- URL a pingear: `https://tdah-focus.onrender.com/health`
 - Frecuencia: Cada 10 minutos
 
 ---
@@ -525,7 +525,7 @@ Monitorear:
 
 Ver estadísticas:
 ```bash
-curl https://adhd-chatbot-api.onrender.com/api/chat/stats
+curl https://tdah-focus.onrender.com/api/chat/stats
 ```
 
 ---
