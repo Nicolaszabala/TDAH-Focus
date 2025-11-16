@@ -11,6 +11,7 @@ import { TIMER_STATES } from '../utils/constants';
 // Notification channel ID (required for Android 8+)
 const POMODORO_CHANNEL_ID = 'pomodoro-timer';
 const NOTIFICATION_ID = 'pomodoro-running';
+const COMPLETION_NOTIFICATION_ID = 'pomodoro-completion';
 
 // Action IDs for notification buttons
 const ACTION_PAUSE = 'pause';
@@ -250,6 +251,7 @@ export async function showCompletionNotification(type) {
     const isWorkComplete = type === 'work';
 
     await notifee.displayNotification({
+      id: COMPLETION_NOTIFICATION_ID,
       title: isWorkComplete ? '🎉 ¡Sesión completada!' : '✅ ¡Descanso terminado!',
       body: isWorkComplete
         ? 'Has completado 25 minutos de trabajo enfocado. Toma un descanso.'
