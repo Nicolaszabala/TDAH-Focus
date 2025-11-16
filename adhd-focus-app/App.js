@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { LogBox } from 'react-native';
 import { Provider } from 'react-redux';
 import store from './src/store/store';
 import AppNavigator from './src/navigation/AppNavigator';
@@ -7,6 +8,11 @@ import { loadTasks } from './src/store/slices/tasksSlice';
 import { loadHistory } from './src/store/slices/pomodoroSlice';
 import { loadSettings, setTutorialCompleted } from './src/store/slices/settingsSlice';
 import * as storageService from './src/services/storageService';
+
+// Suppress known warnings
+LogBox.ignoreLogs([
+  'expo-av has been deprecated', // Known deprecation, planned for future migration
+]);
 
 /**
  * Main App Component
@@ -50,7 +56,6 @@ function AppContent() {
 
       // Load tutorial completion status
       const tutorialCompleted = await storageService.loadTutorialCompleted();
-      console.log('[App] Tutorial completed status loaded:', tutorialCompleted);
       store.dispatch(setTutorialCompleted(tutorialCompleted));
     } catch (error) {
       console.error('Error loading persisted data:', error);

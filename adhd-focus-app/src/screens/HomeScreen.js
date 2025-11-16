@@ -30,9 +30,7 @@ export default function HomeScreen({ navigation }) {
 
   // Show tutorial on first launch
   useEffect(() => {
-    console.log('[HomeScreen] tutorialCompleted:', tutorialCompleted);
     if (!tutorialCompleted) {
-      console.log('[HomeScreen] Showing tutorial...');
       // Small delay to ensure smooth render
       const timer = setTimeout(() => {
         setShowTutorial(true);

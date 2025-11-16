@@ -77,10 +77,8 @@ export default function Tutorial({ visible, onComplete, navigation }) {
    * Mark tutorial as completed and persist
    */
   const completeTutorial = async () => {
-    console.log('[Tutorial] Completing tutorial...');
     dispatch(setTutorialCompleted(true));
     await saveTutorialCompleted(true);
-    console.log('[Tutorial] Tutorial completion saved to storage');
     if (onComplete) {
       onComplete();
     }

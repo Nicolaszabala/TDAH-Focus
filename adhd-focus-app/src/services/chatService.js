@@ -473,6 +473,11 @@ export function resetConnectionNotifications() {
   connectionState.hasShownOnlineMsg = false;
 }
 
+export {
+  getOfflineNotification,
+  getOnlineNotification,
+};
+
 export default {
   processMessage,
   getSuggestedReplies,
