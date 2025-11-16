@@ -306,10 +306,21 @@ Los diagramas UML (casos de uso, clases, secuencia, estados) se encuentran en el
 
 ## 📚 Referencias Principales
 
-- Cortese, S., et al. (2018). Comparative efficacy and tolerability of medications for ADHD in adults. *The Lancet Psychiatry*.
-- Nigg, J. T., et al. (2024). The effects of white noise on attention and performance in ADHD: A meta-analysis. *Journal of Attention Disorders*.
-- Berrezueta-Guzman, J., et al. (2025). ChatGPT as a digital therapeutic tool for ADHD. *Digital Health*.
-- Kreider, C. M., et al. (2019). The Pomodoro Technique for ADHD time management. *ADHD Report*.
+Berrezueta-Guzman, S., Kandil, M., Martín-Ruiz, M.-L., Pau de la Cruz, I., & Krusche, S. (2024). Future of ADHD care: Evaluating the efficacy of ChatGPT in therapy enhancement. *Healthcare*, *12*(6), 683. https://doi.org/10.3390/healthcare12060683
+
+Berrezueta-Guzman, S., Kandil, M., & Wagner, S. (2025). Integrating AI into ADHD therapy: Insights from ChatGPT-4o and robotic assistants. *Human-Centric Intelligent Systems*, 1-25. https://doi.org/10.1007/s44230-025-00099-1
+
+Cortese, S., Adamo, N., Del Giovane, C., Mohr-Jensen, C., Hayes, A. J., Carucci, S., Atkinson, L. Z., Cipriani, A., & 20 coautores adicionales. (2018). Comparative efficacy and tolerability of medications for attention-deficit hyperactivity disorder in children, adolescents, and adults: A systematic review and network meta-analysis. *The Lancet Psychiatry*, *5*(9), 727-738. https://doi.org/10.1016/S2215-0366(18)30269-4
+
+Fundación INECO. (2020). *Más del 4% de la población mundial tiene TDAH*. https://www.fundacionineco.org/mas-del-4-de-la-poblacion-mundial-tiene-tdah/
+
+Hosseinnia, M., Pirzadeh, A., Nazari, A., & Heidari, Z. (2025). Applications for the management of Attention Deficit Hyperactivity Disorder: A systematic review. *Frontiers in Public Health*, *13*, 1483923. https://doi.org/10.3389/fpubh.2025.1483923
+
+Kreider, C. M., Medina, S., & Lan, M.-F. (2019). Strategies for coping with time-related and productivity challenges of young people with learning disabilities and attention-deficit/hyperactivity disorder. *Child: Care, Health and Development*, *45*(2), 291-300. https://doi.org/10.1111/cch.12653
+
+Nigg, J. T., Karalunas, S. L., Willoughby, M. T., Wagner, N., Elmore, A. L., Kaul, S., Denton, C., & Steeger, C. M. (2024). Systematic review and meta-analysis: Do white noise or pink noise help with task performance in youth with attention-deficit/hyperactivity disorder or with elevated attention problems? *Journal of the American Academy of Child & Adolescent Psychiatry*, *63*(8), 785-796. https://doi.org/10.1016/j.jaac.2024.01.013
+
+Paul, M. L., Van Gestel, H., Domecq, S., Mayes, T., Emslie, G., Childress, A., Weisenmuller, C., Brown, G., Walton, A., Gleason, O. C., & O'Shea, J. (2024). Incidence of attention-deficit/hyperactivity disorder between 2016 and 2023: A retrospective cohort. *Psychiatric Research and Clinical Practice*, *6*(3-4), 96-105. https://doi.org/10.1176/appi.prcp.20240121
 
 ---
 
