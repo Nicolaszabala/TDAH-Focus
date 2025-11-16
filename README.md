@@ -56,7 +56,7 @@ Servidor backend que proporciona:
 ### Backend (Servidor)
 - **Runtime**: Node.js 18+
 - **Framework**: Express.js
-- **LLM**: Groq API (LLaMA 3.1 70B)
+- **LLM**: Hugging Face Inference API (Llama 3.2 1B Instruct)
 - **Caché**: Node-cache
 - **Validación**: Express-validator
 
@@ -124,13 +124,12 @@ cd adhd-chatbot-backend
 # Instalar dependencias
 npm install
 
-# Crear archivo .env (ver adhd-chatbot-backend/README.md para variables)
+# Crear archivo .env (opcional - la API key ya está incluida en el código)
 cp .env.example .env
-# Editar .env con tu API key de Groq
 
 # Iniciar servidor
 npm start
-# Servidor corriendo en http://localhost:3001
+# Servidor corriendo en http://localhost:3000
 ```
 
 ### 3. Configurar la Aplicación Móvil
@@ -290,8 +289,8 @@ Los diagramas UML (casos de uso, clases, secuencia, estados) se encuentran en el
 - Reinstalar dependencias: `rm -rf node_modules && npm install`
 
 ### El backend no conecta
-- Verificar que el servidor esté corriendo en `http://localhost:3001`
-- Verificar que `.env` tenga `GROQ_API_KEY` configurado
+- Verificar que el servidor esté corriendo en `http://localhost:3000`
+- La API key de Hugging Face ya está incluida en el código
 - Revisar logs del servidor para errores
 
 ### El asistente no responde

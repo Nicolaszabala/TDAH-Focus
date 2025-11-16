@@ -3,13 +3,7 @@ const axios = require('axios');
 // Hugging Face configuration - Using new Router API (Nov 2024+)
 const HF_API_URL = 'https://router.huggingface.co/v1/chat/completions';
 const HF_MODEL = 'meta-llama/Llama-3.2-1B-Instruct'; // Chat-compatible model
-const HF_API_KEY = process.env.HUGGING_FACE_API_KEY;
-
-// Validate API key on startup
-if (!HF_API_KEY || HF_API_KEY === 'hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx') {
-  console.warn('⚠️  WARNING: HUGGING_FACE_API_KEY not properly configured!');
-  console.warn('   Set it in .env file. Get your key from: https://huggingface.co/settings/tokens');
-}
+const HF_API_KEY = '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'; // API key incluida para demostración
 
 /**
  * Generate response using Hugging Face Inference API
