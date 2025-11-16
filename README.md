@@ -25,18 +25,18 @@ Este repositorio contiene dos componentes principales:
 
 Aplicación móvil multiplataforma que integra 5 módulos funcionales:
 
-- **Gestión Diferenciada de Tareas**: Sistema de clasificación obligatorias/opcionales con contraste cromático
-- **Técnica Pomodoro Adaptada**: Temporizador de 25 minutos con pausas configurables (5 o 10 min)
-- **Modo Concentración**: Interfaz minimalista que reduce distracciones digitales
-- **Ambientes Sonoros Terapéuticos**: Reproducción de ruido rosa y marrón (evidencia científica)
-- **Asistente Conversacional Especializado**: Reconocimiento de patrones TDAH y orientación personalizada
+- **Gestión de tareas**: Sistema de clasificación obligatorias/opcionales con contraste cromático
+- **Técnica Pomodoro**: Temporizador de 25 minutos con pausas configurables (5 o 10 min)
+- **Modo concentración**: Interfaz minimalista que reduce distracciones digitales
+- **Ambientes Sonoros**: Reproducción de ruido rosa y marrón (evidencia científica)
+- **Asistente Conversacional**: Reconocimiento de patrones TDAH y orientación personalizada
 
 ### 2. **adhd-chatbot-backend/** - Backend del Asistente (Node.js + Express)
 
 Servidor backend que proporciona:
 
 - API REST para el asistente conversacional
-- Integración con LLM (Groq/LLaMA) para respuestas contextuales
+- Integración con LLM para respuestas contextuales
 - Base de conocimiento especializada en TDAH adulto
 - Sistema de caché para optimizar rendimiento
 - Rate limiting y validación de requests
@@ -62,7 +62,6 @@ Servidor backend que proporciona:
 
 ### Plataformas Soportadas
 - **Android**: 8.0+ (API level 26+)
-- **Potencial iOS**: 13+ (86% reutilización de código)
 
 ---
 
