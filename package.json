@@ -1,0 +1,13 @@
+{
+  "name": "tdah-focus-entrega",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "adhd-chatbot-backend",
+    "adhd-focus-app"
+  ],
+  "scripts": {
+    "dev:app": "cd adhd-focus-app && npx expo start --dev-client",
+    "dev:backend": "cd adhd-chatbot-backend && node server.js"
+  }
+}
