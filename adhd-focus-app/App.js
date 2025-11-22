@@ -7,6 +7,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 import { loadTasks } from './src/store/slices/tasksSlice';
 import { loadHistory } from './src/store/slices/pomodoroSlice';
 import { loadSettings, setTutorialCompleted } from './src/store/slices/settingsSlice';
+import { loadGoals } from './src/store/slices/weeklyGoalsSlice';
 import * as storageService from './src/services/storageService';
 
 // Suppress known warnings
@@ -57,6 +58,12 @@ function AppContent() {
       // Load tutorial completion status
       const tutorialCompleted = await storageService.loadTutorialCompleted();
       store.dispatch(setTutorialCompleted(tutorialCompleted));
+
+      // Load weekly goals
+      const weeklyGoals = await storageService.loadWeeklyGoals();
+      if (weeklyGoals) {
+        store.dispatch(loadGoals(weeklyGoals));
+      }
     } catch (error) {
       console.error('Error loading persisted data:', error);
     }

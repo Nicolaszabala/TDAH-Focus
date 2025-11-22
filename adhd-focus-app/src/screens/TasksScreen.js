@@ -40,6 +40,7 @@ export default function TasksScreen() {
   const dispatch = useDispatch();
   const tasks = useSelector(selectAllTasks);
   const activeGoal = useSelector(selectActiveGoal);
+  const weeklyGoalsState = useSelector((state) => state.weeklyGoals);
 
   // Tab state
   const [activeTab, setActiveTab] = useState('tasks');
@@ -69,6 +70,17 @@ export default function TasksScreen() {
       saveTasksToStorage(); // Save immediately for empty state
     }
   }, [tasks]);
+
+  // Auto-save weekly goals whenever they change
+  useEffect(() => {
+    const saveGoalsToStorage = async () => {
+      await storageService.saveWeeklyGoals(weeklyGoalsState);
+    };
+
+    // Debounce save to avoid excessive writes
+    const timeoutId = setTimeout(saveGoalsToStorage, 500);
+    return () => clearTimeout(timeoutId);
+  }, [weeklyGoalsState]);
 
   // Tasks handlers
   const handleAddTask = () => {
