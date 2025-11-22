@@ -20,7 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
  * RF04: Show filtered tasks
  * Displays list of tasks using FlatList for performance
  */
-export default function TaskList({ onEditTask, onDeleteTask, onTaskPress }) {
+export default function TaskList({ onEditTask, onDeleteTask, onTaskPress, onNotesPress }) {
   const dispatch = useDispatch();
   const tasks = useSelector(selectFilteredTasks);
   const filter = useSelector((state) => state.tasks.filter);
@@ -61,6 +61,7 @@ export default function TaskList({ onEditTask, onDeleteTask, onTaskPress }) {
       onEdit={() => onEditTask(item)}
       onDelete={() => onDeleteTask(item)}
       onPress={() => onTaskPress && onTaskPress(item)}
+      onNotesPress={() => onNotesPress(item)}
     />
   );
 

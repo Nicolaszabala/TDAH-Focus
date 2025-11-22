@@ -19,6 +19,7 @@ import TaskFilters from '../components/tasks/TaskFilters';
 import TaskList from '../components/tasks/TaskList';
 import TaskForm from '../components/tasks/TaskForm';
 import DeleteConfirmModal from '../components/common/DeleteConfirmModal';
+import NotesModal from '../components/tasks/NotesModal';
 import * as storageService from '../services/storageService';
 
 /**
@@ -35,6 +36,8 @@ export default function TasksScreen() {
   const [editingTask, setEditingTask] = useState(null);
   const [deletingTask, setDeletingTask] = useState(null);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [isNotesModalVisible, setIsNotesModalVisible] = useState(false);
+  const [notesTask, setNotesTask] = useState(null);
 
   // RNF17: Auto-save tasks whenever they change
   useEffect(() => {
@@ -99,6 +102,16 @@ export default function TasksScreen() {
     setEditingTask(null);
   };
 
+  const handleOpenNotes = (task) => {
+    setNotesTask(task);
+    setIsNotesModalVisible(true);
+  };
+
+  const handleCloseNotes = () => {
+    setIsNotesModalVisible(false);
+    setNotesTask(null);
+  };
+
   return (
     <View style={styles.container}>
       {/* RF04: Filters */}
@@ -108,6 +121,7 @@ export default function TasksScreen() {
       <TaskList
         onEditTask={handleEditTask}
         onDeleteTask={handleDeleteTask}
+        onNotesPress={handleOpenNotes}
       />
 
       {/* FAB: Floating Action Button to add task */}
@@ -147,6 +161,13 @@ export default function TasksScreen() {
         cancelText="Cancelar"
         onConfirm={handleConfirmDelete}
         onCancel={handleCancelDelete}
+      />
+
+      {/* Notes Modal */}
+      <NotesModal
+        visible={isNotesModalVisible}
+        task={notesTask}
+        onClose={handleCloseNotes}
       />
     </View>
   );

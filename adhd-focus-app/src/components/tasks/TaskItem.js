@@ -17,7 +17,7 @@ import { TASK_TYPES, TASK_COLORS } from '../../utils/constants';
  * RF07, RF08: Edit task (title and type)
  * RF09: Delete task
  */
-export default function TaskItem({ task, onToggle, onEdit, onDelete, onPress }) {
+export default function TaskItem({ task, onToggle, onEdit, onDelete, onPress, onNotesPress }) {
   const isObligatory = task.type === TASK_TYPES.OBLIGATORY;
   const taskColor = isObligatory ? TASK_COLORS.OBLIGATORY : TASK_COLORS.OPTIONAL;
 
@@ -102,6 +102,20 @@ export default function TaskItem({ task, onToggle, onEdit, onDelete, onPress }) 
 
       {/* Right side: Action buttons */}
       <View style={styles.actions}>
+        {/* Notes button */}
+        <TouchableOpacity
+          style={[styles.actionButton, styles.notesButton]}
+          onPress={onNotesPress}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
+          <Ionicons name="document-text" size={18} color="#9B59B6" />
+          {task.notes && task.notes.length > 0 && (
+            <View style={styles.notesBadge}>
+              <Text style={styles.notesBadgeText}>{task.notes.length}</Text>
+            </View>
+          )}
+        </TouchableOpacity>
+
         {/* RF07, RF08: Edit button */}
         <TouchableOpacity
           style={[styles.actionButton, styles.editButton]}
@@ -219,6 +233,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 8,
+  },
+  notesButton: {
+    backgroundColor: '#F4ECF7',
+    position: 'relative',
+  },
+  notesBadge: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    backgroundColor: '#9B59B6',
+    borderRadius: 8,
+    minWidth: 16,
+    height: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 4,
+  },
+  notesBadgeText: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   editButton: {
     backgroundColor: '#E8F4FD',

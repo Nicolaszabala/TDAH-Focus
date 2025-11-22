@@ -80,6 +80,19 @@ const tasksSlice = createSlice({
       }
     },
 
+    // Edit note
+    editNote: (state, action) => {
+      const { taskId, noteId, content } = action.payload;
+      const task = state.tasks.find(t => t.id === taskId);
+      if (task) {
+        const note = task.notes.find(n => n.id === noteId);
+        if (note) {
+          note.content = content;
+          note.updatedAt = new Date().toISOString();
+        }
+      }
+    },
+
     // Load tasks from storage
     loadTasks: (state, action) => {
       state.tasks = action.payload;
@@ -111,6 +124,7 @@ export const {
   deleteTask,
   setFilter,
   addNote,
+  editNote,
   deleteNote,
   loadTasks,
   setLoading,
