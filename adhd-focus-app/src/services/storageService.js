@@ -87,6 +87,16 @@ export const loadTutorialCompleted = async () => {
   return completed !== null ? completed : false;
 };
 
+// Weekly Goals operations
+export const saveWeeklyGoals = async (goalsState) => {
+  // Save entire goals state (goals, archivedGoals, settings, activeGoalId)
+  return await saveData(STORAGE_KEYS.WEEKLY_GOALS, goalsState);
+};
+
+export const loadWeeklyGoals = async () => {
+  return await loadData(STORAGE_KEYS.WEEKLY_GOALS);
+};
+
 // RNF19: Validate data integrity
 export const validateStorageIntegrity = async () => {
   try {
@@ -123,6 +133,7 @@ export const clearAllData = async () => {
       STORAGE_KEYS.TASKS,
       STORAGE_KEYS.POMODORO_HISTORY,
       STORAGE_KEYS.SETTINGS,
+      STORAGE_KEYS.WEEKLY_GOALS,
     ]);
     return { success: true };
   } catch (error) {
