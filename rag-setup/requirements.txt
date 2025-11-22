@@ -1,0 +1,24 @@
+# Dependencias para RAG (Retrieval Augmented Generation)
+# Instalación: pip install -r requirements.txt
+
+# ChromaDB - Vector database para embeddings
+chromadb>=0.4.22
+
+# LangChain - Framework para LLM applications
+langchain>=0.1.0
+
+# Document loaders
+pypdf>=3.17.0         # Para PDFs
+python-docx>=1.1.0    # Para Word docs (opcional)
+
+# Embeddings
+sentence-transformers>=2.2.2
+
+# API Service
+flask>=3.0.0
+flask-cors>=4.0.0
+requests>=2.31.0
+
+# Utilities
+python-dotenv>=1.0.0
+tqdm>=4.66.0          # Progress bars
