@@ -4,6 +4,7 @@ import pomodoroReducer from './slices/pomodoroSlice';
 import focusReducer from './slices/focusSlice';
 import settingsReducer from './slices/settingsSlice';
 import soundReducer from './slices/soundSlice';
+import weeklyGoalsReducer from './slices/weeklyGoalsSlice';
 
 /**
  * Redux Store Configuration
@@ -16,6 +17,7 @@ export const store = configureStore({
     focus: focusReducer,
     settings: settingsReducer,
     sound: soundReducer,
+    weeklyGoals: weeklyGoalsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
