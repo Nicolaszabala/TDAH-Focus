@@ -342,6 +342,8 @@ Nigg, J. T., Karalunas, S. L., Willoughby, M. T., Wagner, N., Elmore, A. L., Kau
 
 Paul, M. L., Van Gestel, H., Domecq, S., Mayes, T., Emslie, G., Childress, A., Weisenmuller, C., Brown, G., Walton, A., Gleason, O. C., & O'Shea, J. (2024). Incidence of attention-deficit/hyperactivity disorder between 2016 and 2023: A retrospective cohort. *Psychiatric Research and Clinical Practice*, *6*(3-4), 96-105. https://doi.org/10.1176/appi.prcp.20240121
 
+Berrezueta Guzmán, J. S. (2022). *Ubiquitous childhood ADHD therapies based on smart-environment solutions* [Tesis doctoral, Universidad Politécnica de Madrid]. Archivo Digital UPM. https://doi.org/10.20868/UPM.thesis.71647
+
 ---
 
 ## 📞 Contacto
