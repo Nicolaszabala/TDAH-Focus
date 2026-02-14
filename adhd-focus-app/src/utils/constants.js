@@ -43,6 +43,7 @@ export const STORAGE_KEYS = {
   POMODORO_HISTORY: '@adhd_app:pomodoro_history',
   SETTINGS: '@adhd_app:settings',
   TUTORIAL_COMPLETED: '@adhd_app:tutorial_completed',
+  WEEKLY_GOALS: '@adhd_app:weekly_goals',
 };
 
 // Focus Mode Messages
