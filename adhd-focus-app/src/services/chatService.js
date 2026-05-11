@@ -17,7 +17,7 @@ import {
 } from '../knowledge';
 
 // Disable console logs in production
-const DEBUG = false;
+const DEBUG = true; // ACTIVADO PARA DIAGNÓSTICO
 
 // Backend API configuration
 // IMPORTANT: Change this to your deployed Render.com URL
@@ -27,9 +27,9 @@ const USE_LOCAL_BACKEND = false; // Set to true only if running backend locally 
 
 const API_URL = USE_LOCAL_BACKEND
   ? 'http://localhost:3000/api/chat' // Development (local backend - only for emulator)
-  : 'https://tdah-focus.onrender.com'; // Production (Render.com)
+  : 'https://tdah-focus.onrender.com/api/chat'; // Production (Render.com)
 
-const API_TIMEOUT = 10000; // 10 seconds
+const API_TIMEOUT = 60000; // 60 seconds (Render Cold Start safe)
 
 // Connection state management
 let connectionState = {
@@ -67,15 +67,6 @@ function getOnlineNotification() {
     messageType: 'online',
   };
 }
-
-/**
- * Process user message using LLM backend
- * Falls back to local pattern matching if backend fails
- *
- * @param {string} userMessage - User's input message
- * @param {Object} context - App context (tasks, pomodoro, etc.)
- * @returns {Promise<Object>} - Response object { text, pattern, source }
- */
 export async function processMessage(userMessage, context = {}) {
   if (!userMessage || userMessage.trim().length === 0) {
     return {
@@ -118,6 +109,10 @@ export async function processMessage(userMessage, context = {}) {
 
     return llmResponse;
   } catch (error) {
+    // FORCE LOGGING ERROR EVEN IN PRODUCTION FOR DIAGNOSIS
+    console.error('❌ CRITICAL LLM API ERROR:', error);
+    console.error('❌ URL:', API_URL);
+
     // Log error details to console (for debugging), but DON'T show to user
     if (DEBUG) console.log('[ChatService] ⚠️ LLM API failed, using offline mode:', error.message);
 
@@ -216,11 +211,17 @@ async function callLLMAPI(userMessage, context) {
 
     const data = await response.json();
 
+    // Handle nested response object (fix for object-in-react-child error)
+    let responseText = data.response;
+    if (typeof data.response === 'object' && data.response !== null) {
+      responseText = data.response.response || JSON.stringify(data.response);
+    }
+
     // Detect pattern for UI badge (optional)
     const pattern = detectPattern(userMessage);
 
     return {
-      text: data.response,
+      text: responseText,
       pattern,
       source: data.cached ? 'cache' : 'llm',
       processingTime: data.processingTime,

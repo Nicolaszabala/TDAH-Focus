@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TDAH Focus - Presentación TFG</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a1a2e;
+      color: #ffffff;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Slide container */
+    .slides-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      padding: 40px 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: fadeIn 0.3s ease-in-out;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #E74C3C;
+      border-bottom: 3px solid #E74C3C;
+      padding-bottom: 10px;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #3498DB;
+    }
+
+    h3 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      color: #9b59b6;
+    }
+
+    p, li {
+      font-size: 1.1em;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      margin-left: 30px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Special slides */
+    .slide-title {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    .slide-title h1 {
+      font-size: 3.5em;
+      border: none;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .slide-title .subtitle {
+      font-size: 1.8em;
+      color: #3498DB;
+      margin-bottom: 40px;
+    }
+
+    .slide-title .info {
+      font-size: 1.2em;
+      color: #95a5a6;
+      line-height: 2;
+    }
+
+    .slide-title .logo {
+      font-size: 5em;
+      margin-bottom: 30px;
+    }
+
+    /* Code blocks */
+    pre {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 12px;
+      overflow-x: auto;
+      font-size: 0.75em;
+      margin: 8px 0;
+    }
+
+    code {
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      color: #e6edf3;
+    }
+
+    .keyword { color: #ff7b72; }
+    .string { color: #a5d6ff; }
+    .comment { color: #8b949e; }
+    .function { color: #d2a8ff; }
+    .number { color: #79c0ff; }
+    .property { color: #7ee787; }
+
+    /* Diagrams */
+    .diagram {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 15px;
+      font-family: 'Consolas', monospace;
+      font-size: 0.8em;
+      white-space: pre;
+      line-height: 1.3;
+      overflow-x: auto;
+    }
+
+    /* Cards/Boxes */
+    .card {
+      background: rgba(52, 152, 219, 0.1);
+      border: 1px solid #3498DB;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 8px 0;
+    }
+
+    .card-red {
+      background: rgba(231, 76, 60, 0.1);
+      border-color: #E74C3C;
+    }
+
+    .card-green {
+      background: rgba(39, 174, 96, 0.1);
+      border-color: #27AE60;
+    }
+
+    .card-purple {
+      background: rgba(155, 89, 182, 0.1);
+      border-color: #9b59b6;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    /* Module cards */
+    .module-card {
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(52, 152, 219, 0.05));
+      border: 2px solid #3498DB;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .module-card .icon {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .module-card h4 {
+      font-size: 1.1em;
+      color: #3498DB;
+      margin-bottom: 8px;
+    }
+
+    .module-card p {
+      font-size: 0.9em;
+      color: #bdc3c7;
+    }
+
+    /* Stats */
+    .stat {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .stat-number {
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #E74C3C;
+    }
+
+    .stat-label {
+      font-size: 0.9em;
+      color: #95a5a6;
+    }
+
+    /* Highlights */
+    .highlight {
+      background: linear-gradient(90deg, #E74C3C, #c0392b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: bold;
+    }
+
+    .highlight-blue {
+      color: #3498DB;
+      font-weight: bold;
+    }
+
+    /* References */
+    .reference {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      font-style: italic;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #34495e;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+    }
+
+    .nav button {
+      background: #3498DB;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: all 0.2s;
+    }
+
+    .nav button:hover {
+      background: #2980b9;
+      transform: scale(1.05);
+    }
+
+    .nav button:disabled {
+      background: #34495e;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Progress bar */
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #E74C3C;
+      transition: width 0.3s;
+      z-index: 1000;
+    }
+
+    /* Slide counter */
+    .counter {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      font-size: 1em;
+      color: #7f8c8d;
+    }
+
+    /* Flow steps */
+    .flow-step {
+      display: flex;
+      align-items: center;
+      margin: 6px 0;
+      padding: 10px 15px;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 8px;
+      border-left: 4px solid #3498DB;
+    }
+
+    .flow-step .step-number {
+      background: #3498DB;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+      font-size: 0.9em;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+
+    th, td {
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 1px solid #34495e;
+    }
+
+    th {
+      background: rgba(52, 152, 219, 0.2);
+      color: #3498DB;
+      font-size: 0.95em;
+    }
+
+    td {
+      font-size: 0.9em;
+    }
+
+    /* Flex content */
+    .content-flex {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* Icons */
+    .icon-inline {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    /* Checklist */
+    .checklist li {
+      list-style: none;
+      position: relative;
+      padding-left: 35px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #27AE60;
+      font-weight: bold;
+    }
+
+    /* Section divider slides */
+    .slide-section {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+    }
+
+    .slide-section h1 {
+      font-size: 3em;
+      border: none;
+      margin-bottom: 20px;
+    }
+
+    .slide-section .section-number {
+      font-size: 1.5em;
+      color: #3498DB;
+      margin-bottom: 20px;
+    }
+
+    /* Scrollable content */
+    .scrollable {
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    /* Small text */
+    .small {
+      font-size: 0.85em;
+    }
+
+    /* Centered */
+    .centered {
+      text-align: center;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 5px 15px;
+      background: #E74C3C;
+      color: white;
+      border-radius: 20px;
+      font-size: 0.9em;
+      margin: 5px;
+    }
+
+    .badge-blue {
+      background: #3498DB;
+    }
+
+    .badge-green {
+      background: #27AE60;
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <div class="slides-container">
+
+    <!-- ==================== BLOQUE 1: INTRODUCCIÓN ==================== -->
+
+    <!-- Slide 1: Portada -->
+    <div class="slide slide-title active">
+      <div class="logo">🧠</div>
+      <h1>TDAH Focus</h1>
+      <div class="subtitle">Aplicación Móvil de Apoyo para Adultos con TDAH</div>
+      <div class="info">
+        <strong>Trabajo Final de Grado - Licenciatura en Informática</strong><br><br>
+        <strong>Alumno:</strong> Nicolás Alejandro Cortés<br>
+        <strong>Tutora:</strong> Lic. María Victoria Huerta<br>
+        <strong>Universidad Siglo 21</strong><br>
+        Febrero 2026
+      </div>
+    </div>
+
+    <!-- Slide 2: El Problema -->
+    <div class="slide">
+      <h1>El Problema</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>Prevalencia Global</h3>
+            <div class="card card-red">
+              <div class="stat">
+                <div class="stat-number">2.5% - 6.7%</div>
+                <div class="stat-label">de adultos a nivel mundial</div>
+              </div>
+            </div>
+            <p>Aproximadamente <span class="highlight">4%</span> en Argentina</p>
+          </div>
+          <div>
+            <h3>Impacto en la Vida Diaria</h3>
+            <ul>
+              <li>Dificultad para <strong>iniciar tareas</strong></li>
+              <li>Problemas de <strong>gestión del tiempo</strong></li>
+              <li>Desafíos con la <strong>organización</strong></li>
+              <li><strong>Parálisis ejecutiva</strong> frecuente</li>
+              <li>Alta susceptibilidad a <strong>distracciones</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 30px;">
+          <h3>💡 Oportunidad Identificada</h3>
+          <p>Escasez de herramientas tecnológicas especializadas que implementen <strong>intervenciones no farmacológicas basadas en evidencia científica</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Objetivo del Proyecto -->
+    <div class="slide">
+      <h1>Objetivo del Proyecto</h1>
+      <div class="content-flex">
+        <div class="card card-green" style="margin-bottom: 30px;">
+          <h2 style="color: #27AE60; margin-bottom: 20px;">🎯 Objetivo General</h2>
+          <p style="font-size: 1.3em;">
+            Desarrollar un <strong>prototipo funcional</strong> de aplicación móvil que integre
+            <span class="highlight">intervenciones no farmacológicas</span> basadas en evidencia científica
+            para asistir a adultos con TDAH en su productividad diaria.
+          </p>
+        </div>
+
+        <h3>Objetivos Específicos</h3>
+        <ul class="checklist">
+          <li>Implementar sistema de gestión de tareas con diferenciación obligatorias/opcionales</li>
+          <li>Desarrollar timer Pomodoro integrado con el sistema de tareas</li>
+          <li>Crear módulo de ambientes sonoros (ruido rosa/marrón)</li>
+          <li>Integrar asistente virtual especializado en TDAH</li>
+          <li>Garantizar funcionamiento 100% offline para privacidad</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 4: Los 5 Módulos -->
+    <div class="slide">
+      <h1>Los 5 Módulos de TDAH Focus</h1>
+      <div class="content-flex">
+        <div class="grid-5">
+          <div class="module-card">
+            <div class="icon">📋</div>
+            <h4>Tareas</h4>
+            <p>Gestión con clasificación Obligatoria/Opcional</p>
+          </div>
+          <div class="module-card">
+            <div class="icon">⏱️</div>
+            <h4>Pomodoro</h4>
+            <p>Timer 25/5 min integrado con tareas</p>
+          </div>
+          <div class="module-card">
+            <div class="icon">🎯</div>
+            <h4>Metas</h4>
+            <p>Objetivos semanales con gamificación</p>
+          </div>
+          <div class="module-card">
+            <div class="icon">🔊</div>
+            <h4>Sonidos</h4>
+            <p>Ruido rosa y marrón terapéutico</p>
+          </div>
+          <div class="module-card">
+            <div class="icon">🤖</div>
+            <h4>Asistente</h4>
+            <p>IA especializada en TDAH</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 40px;">
+          <h3>Filosofía de Diseño</h3>
+          <div class="grid-3">
+            <div class="centered">
+              <span class="badge">Simplicidad</span>
+              <p class="small">Máx. 3 acciones por pantalla</p>
+            </div>
+            <div class="centered">
+              <span class="badge badge-blue">Privacidad</span>
+              <p class="small">100% offline, datos locales</p>
+            </div>
+            <div class="centered">
+              <span class="badge badge-green">Accesibilidad</span>
+              <p class="small">WCAG 2.1 AA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BLOQUE 2: FUNDAMENTACIÓN CIENTÍFICA ==================== -->
+
+    <!-- Slide 5: Base Neurobiológica -->
+    <div class="slide">
+      <h1>Base Neurobiológica del TDAH</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <div class="card card-red">
+              <h3>🧬 Déficit de Dopamina</h3>
+              <ul>
+                <li>Neurotransmisor clave en <strong>motivación</strong> y <strong>recompensa</strong></li>
+                <li>Niveles reducidos en corteza prefrontal</li>
+                <li>Afecta la capacidad de <strong>iniciar</strong> acciones</li>
+                <li>Dificulta mantener el <strong>foco</strong> en tareas</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="card card-purple">
+              <h3>🧠 Disfunción Ejecutiva</h3>
+              <ul>
+                <li><strong>Planificación</strong> deficiente</li>
+                <li>Dificultad con <strong>memoria de trabajo</strong></li>
+                <li>Problemas de <strong>inhibición</strong> de impulsos</li>
+                <li><strong>Flexibilidad cognitiva</strong> reducida</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 30px;">
+          <h3>💡 Implicación para el Diseño</h3>
+          <p>Las intervenciones deben proporcionar <strong>estructura externa</strong>, <strong>recompensas frecuentes</strong> y <strong>reducción de carga cognitiva</strong> para compensar estas dificultades neurobiológicas.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Evidencia Pomodoro -->
+    <div class="slide">
+      <h1>Evidencia: Técnica Pomodoro</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <div class="card card-green">
+              <h3>📊 Estudio Clave</h3>
+              <p><strong>Kreider et al. (2019)</strong></p>
+              <p>"Effects of the Pomodoro Technique on Academic Performance"</p>
+              <ul style="margin-top: 15px;">
+                <li>Mejora en <strong>completación de tareas</strong></li>
+                <li>Reducción de <strong>procrastinación</strong></li>
+                <li>Mayor <strong>satisfacción</strong> percibida</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <h3>¿Por qué funciona en TDAH?</h3>
+            <ul>
+              <li>Provee <strong>estructura temporal externa</strong></li>
+              <li>Divide trabajo en <strong>bloques manejables</strong></li>
+              <li><strong>Pausas obligatorias</strong> previenen agotamiento</li>
+              <li>Sensación de <strong>urgencia</strong> controlada</li>
+              <li><strong>Recompensa frecuente</strong> (cada 25 min)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="diagram" style="margin-top: 30px; text-align: center;">
+<span style="color: #E74C3C;">█████████████████████████</span> 25 min TRABAJO
+<span style="color: #27AE60;">█████</span> 5 min DESCANSO
+<span style="color: #E74C3C;">█████████████████████████</span> 25 min TRABAJO
+<span style="color: #27AE60;">█████</span> 5 min DESCANSO
+        </div>
+
+        <p class="reference">Kreider, C. M., Medina, S., & Slamka, M. R. (2019). Disability and Rehabilitation: Assistive Technology.</p>
+      </div>
+    </div>
+
+    <!-- Slide 7: Evidencia Ruido Rosa/Marrón -->
+    <div class="slide">
+      <h1>Evidencia: Ruido Rosa y Marrón</h1>
+      <div class="content-flex">
+        <div class="card card-green" style="margin-bottom: 25px;">
+          <h3>📊 Meta-análisis: Nigg et al. (2024)</h3>
+          <p><strong>"Effects of Background Noise on ADHD Symptoms"</strong></p>
+          <div class="grid-3" style="margin-top: 20px;">
+            <div class="stat">
+              <div class="stat-number" style="color: #27AE60;">g = 0.249</div>
+              <div class="stat-label">Tamaño del efecto</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" style="color: #3498DB;">p < .0001</div>
+              <div class="stat-label">Significancia</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" style="color: #9b59b6;">N = 1,847</div>
+              <div class="stat-label">Participantes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>🔊 Ruido Rosa</h3>
+            <p>Frecuencias equilibradas (-3dB/octava)</p>
+            <ul class="small">
+              <li>Enmascara distracciones externas</li>
+              <li>Mejora concentración sostenida</li>
+              <li>Similar a lluvia suave</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🔊 Ruido Marrón</h3>
+            <p>Frecuencias graves (-6dB/octava)</p>
+            <ul class="small">
+              <li>Mayor enmascaramiento</li>
+              <li>Efecto relajante profundo</li>
+              <li>Similar a cascada/trueno</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="reference">Nigg, J. T., et al. (2024). Psychological Bulletin, 150(3), 282-314.</p>
+      </div>
+    </div>
+
+    <!-- Slide 8: Evidencia Asistente IA -->
+    <div class="slide">
+      <h1>Evidencia: Asistente Virtual con IA</h1>
+      <div class="content-flex">
+        <div class="card card-green" style="margin-bottom: 25px;">
+          <h3>📊 Estudio: Berrezueta-Guzman et al. (2025)</h3>
+          <p><strong>"Virtual assistants for children and adolescents with ADHD"</strong></p>
+          <div class="grid-2" style="margin-top: 20px;">
+            <div class="stat">
+              <div class="stat-number" style="color: #27AE60;">+28%</div>
+              <div class="stat-label">Mejora en atención sostenida</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number" style="color: #3498DB;">+35%</div>
+              <div class="stat-label">Reducción de distracciones</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Beneficios Identificados</h3>
+        <div class="grid-2">
+          <ul>
+            <li><strong>Recordatorios</strong> personalizados</li>
+            <li>Apoyo en <strong>toma de decisiones</strong></li>
+            <li>Reducción de <strong>carga cognitiva</strong></li>
+          </ul>
+          <ul>
+            <li>Asistencia en <strong>parálisis ejecutiva</strong></li>
+            <li><strong>Disponibilidad 24/7</strong></li>
+            <li>Sin juicio ni frustración</li>
+          </ul>
+        </div>
+
+        <div class="card card-purple" style="margin-top: 25px;">
+          <h3>🤖 Implementación en TDAH Focus</h3>
+          <p>Asistente especializado con conocimiento de estrategias cognitivo-conductuales para TDAH, capaz de detectar patrones como parálisis ejecutiva, pérdida de foco e indecisión.</p>
+        </div>
+
+        <p class="reference">Berrezueta-Guzman, J., et al. (2025). Sensors, 25(2), 358.</p>
+      </div>
+    </div>
+
+    <!-- ==================== BLOQUE 3: ARQUITECTURA TÉCNICA ==================== -->
+
+    <!-- Slide 9: Stack Tecnológico -->
+    <div class="slide">
+      <h1>Stack Tecnológico</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>📱 Frontend (Mobile)</h3>
+            <div class="card">
+              <table>
+                <tr><td><strong>React Native</strong></td><td>0.81.5</td></tr>
+                <tr><td><strong>Expo</strong></td><td>SDK 54</td></tr>
+                <tr><td><strong>React</strong></td><td>19.1.0</td></tr>
+              </table>
+            </div>
+
+            <h3>🗄️ Estado y Navegación</h3>
+            <div class="card">
+              <table>
+                <tr><td><strong>Redux Toolkit</strong></td><td>2.10.1</td></tr>
+                <tr><td><strong>React Navigation</strong></td><td>7.x</td></tr>
+                <tr><td><strong>AsyncStorage</strong></td><td>2.2.0</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <h3>🔧 Servicios</h3>
+            <div class="card">
+              <table>
+                <tr><td><strong>expo-av</strong></td><td>Reproducción audio</td></tr>
+                <tr><td><strong>@notifee</strong></td><td>Notificaciones</td></tr>
+                <tr><td><strong>Groq API</strong></td><td>LLM (Llama 3)</td></tr>
+              </table>
+            </div>
+
+            <h3>📊 Métricas del Proyecto</h3>
+            <div class="card card-green">
+              <table>
+                <tr><td><strong>Líneas de código</strong></td><td>~5,500</td></tr>
+                <tr><td><strong>Archivos JS</strong></td><td>50</td></tr>
+                <tr><td><strong>Componentes</strong></td><td>15+</td></tr>
+                <tr><td><strong>Redux Slices</strong></td><td>6</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 10: Arquitectura General -->
+    <div class="slide">
+      <h1>Arquitectura General</h1>
+      <div class="content-flex">
+        <div class="diagram" style="font-size: 0.85em;">
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        <span style="color: #3498DB;">📱 REACT NATIVE + EXPO</span>                         │
+├─────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐      │
+│  │ Inicio  │  │ Tareas  │  │Pomodoro │  │ Sonidos │  │  Chat   │      │
+│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘      │
+│       └────────────┴────────────┼────────────┴────────────┘            │
+│                                 ▼                                       │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │                    <span style="color: #E74C3C;">REDUX STORE (6 SLICES)</span>                       │  │
+│  │  tareas │ pomodoro │ metas │ sonido │ foco │ configuración       │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                                 │                                       │
+│       ┌─────────────────────────┼─────────────────────────┐            │
+│       ▼                         ▼                         ▼            │
+│  ┌───────────┐            ┌───────────┐            ┌───────────┐      │
+│  │ Servicio  │            │ Servicio  │            │ Servicio  │      │
+│  │Almacenam. │            │  Sonido   │            │   Chat    │      │
+│  └─────┬─────┘            └─────┬─────┘            └─────┬─────┘      │
+│        ▼                        ▼                        ▼             │
+│  <span style="color: #27AE60;">AsyncStorage</span>              <span style="color: #9b59b6;">Expo AV</span>               <span style="color: #f39c12;">Groq API</span>          │
+│    (Local)                 (Audio)           (LLM / Sin conexión)     │
+└─────────────────────────────────────────────────────────────────────────┘
+        </div>
+
+        <div class="grid-3" style="margin-top: 15px;">
+          <div class="card small centered">
+            <span class="badge badge-green">Persistencia Local</span>
+            <p>AsyncStorage para datos sin conexión</p>
+          </div>
+          <div class="card small centered">
+            <span class="badge" style="background: #9b59b6;">Audio Nativo</span>
+            <p>Expo AV con reproducción en segundo plano</p>
+          </div>
+          <div class="card small centered">
+            <span class="badge" style="background: #f39c12;">LLM Híbrido</span>
+            <p>En línea + respaldo sin conexión</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 11: Estructura del Proyecto -->
+    <div class="slide">
+      <h1>Estructura del Proyecto</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <pre><code>adhd-focus-app/
+├── src/
+│   ├── <span class="property">components/</span>
+│   │   ├── common/
+│   │   ├── goals/
+│   │   ├── pomodoro/
+│   │   ├── sound/
+│   │   └── tasks/
+│   │
+│   ├── <span class="property">screens/</span>
+│   │   ├── HomeScreen.js
+│   │   ├── TasksScreen.js
+│   │   ├── PomodoroScreen.js
+│   │   ├── SoundScreen.js
+│   │   ├── ChatScreen.js
+│   │   └── SettingsScreen.js
+│   │
+│   ├── <span class="property">store/</span>
+│   │   ├── store.js
+│   │   └── slices/ <span class="comment">(6 slices)</span>
+│   │
+│   ├── <span class="property">services/</span>
+│   │   ├── chatService.js
+│   │   ├── soundService.js
+│   │   └── storageService.js
+│   │
+│   ├── <span class="property">hooks/</span>
+│   │   └── usePomodoro.js
+│   │
+│   └── <span class="property">knowledge/</span>
+│       └── adhdKnowledgeBase.js
+│
+├── App.js
+└── package.json</code></pre>
+          </div>
+
+          <div>
+            <h3>📁 Responsabilidades</h3>
+
+            <div class="card small" style="margin-bottom: 15px;">
+              <strong style="color: #27AE60;">components/</strong>
+              <p>Componentes reutilizables de UI (TimerDisplay, SoundCard, TaskItem)</p>
+            </div>
+
+            <div class="card small" style="margin-bottom: 15px;">
+              <strong style="color: #3498DB;">screens/</strong>
+              <p>Pantallas principales con lógica de presentación</p>
+            </div>
+
+            <div class="card small" style="margin-bottom: 15px;">
+              <strong style="color: #E74C3C;">store/slices/</strong>
+              <p>Estado global con Redux Toolkit (tasksSlice, pomodoroSlice, etc.)</p>
+            </div>
+
+            <div class="card small" style="margin-bottom: 15px;">
+              <strong style="color: #9b59b6;">services/</strong>
+              <p>Lógica de negocio y conexiones externas</p>
+            </div>
+
+            <div class="card small">
+              <strong style="color: #f39c12;">hooks/</strong>
+              <p>Custom hooks para lógica compleja (timer, notificaciones)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 12: Patrones de Diseño -->
+    <div class="slide">
+      <h1>Patrones de Diseño</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <div class="card" style="margin-bottom: 20px;">
+              <h3>🔄 Redux Toolkit + Slices</h3>
+              <pre><code><span class="comment">// Estado inmutable con Immer</span>
+<span class="keyword">const</span> tasksSlice = createSlice({
+  name: <span class="string">'tasks'</span>,
+  initialState,
+  reducers: {
+    addTask: (state, action) => {
+      state.tasks.push(newTask);
+    }
+  }
+});</code></pre>
+            </div>
+
+            <div class="card">
+              <h3>🎣 Custom Hooks</h3>
+              <pre><code><span class="comment">// Encapsula lógica del timer</span>
+<span class="keyword">function</span> <span class="function">usePomodoro</span>() {
+  <span class="keyword">const</span> intervalRef = useRef();
+
+  useEffect(() => {
+    <span class="keyword">if</span> (isRunning) {
+      intervalRef.current =
+        setInterval(tick, <span class="number">1000</span>);
+    }
+  }, [isRunning]);
+}</code></pre>
+            </div>
+          </div>
+
+          <div>
+            <div class="card" style="margin-bottom: 20px;">
+              <h3>⚡ Selectors Memoizados</h3>
+              <pre><code><span class="comment">// Evita re-renders innecesarios</span>
+<span class="keyword">export const</span> selectTaskCounts =
+  createSelector(
+    [selectAllTasks],
+    (tasks) => ({
+      total: tasks.length,
+      pending: tasks.filter(
+        t => !t.completed
+      ).length
+    })
+  );</code></pre>
+            </div>
+
+            <div class="card">
+              <h3>🔌 Capa de Servicios</h3>
+              <pre><code><span class="comment">// Abstracción de servicios externos</span>
+<span class="keyword">export async function</span> <span class="function">loadSound</span>(type) {
+  <span class="keyword">const</span> { sound } = <span class="keyword">await</span>
+    Audio.Sound.createAsync(
+      SOUND_FILES[type],
+      { isLooping: <span class="keyword">true</span> }
+    );
+  <span class="keyword">return</span> sound;
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 13: Decisiones Clave -->
+    <div class="slide">
+      <h1>Decisiones de Diseño Clave</h1>
+      <div class="content-flex">
+        <div class="grid-3">
+          <div class="card card-green">
+            <h3>🔒 100% Offline</h3>
+            <ul class="small">
+              <li>Sin registro obligatorio</li>
+              <li>Datos almacenados localmente</li>
+              <li>LLM con respaldo sin conexión</li>
+              <li>Funciona sin internet</li>
+            </ul>
+            <p class="small" style="margin-top: 15px;"><strong>Razón:</strong> Privacidad total del usuario</p>
+          </div>
+
+          <div class="card card-red">
+            <h3>🛡️ Privacidad First</h3>
+            <ul class="small">
+              <li>Solo metadatos a servidor</li>
+              <li>NO se envía contenido de tareas</li>
+              <li>Sin tracking ni analytics</li>
+              <li>Sin PII (Personally Identifiable Info)</li>
+            </ul>
+            <p class="small" style="margin-top: 15px;"><strong>Razón:</strong> Confianza del usuario con TDAH</p>
+          </div>
+
+          <div class="card card-purple">
+            <h3>♿ WCAG 2.1 AA</h3>
+            <ul class="small">
+              <li>Contraste 4.5:1 mínimo</li>
+              <li>Área táctils 44x44pt</li>
+              <li>Fuentes mínimo 16pt</li>
+              <li>Máx. 3 acciones por pantalla</li>
+            </ul>
+            <p class="small" style="margin-top: 15px;"><strong>Razón:</strong> Reducir sobrecarga cognitiva</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 30px;">
+          <h3>📱 Decisión: React Native + Expo</h3>
+          <div class="grid-2">
+            <div>
+              <p><strong>Ventajas:</strong></p>
+              <ul class="small">
+                <li>Desarrollo multiplataforma (iOS/Android)</li>
+                <li>Recarga en caliente para iteración rápida</li>
+                <li>Ecosistema maduro de librerías</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>Compromisos aceptados:</strong></p>
+              <ul class="small">
+                <li>Tamaño de paquete mayor</li>
+                <li>Dependencia de SDK Expo</li>
+                <li>Algunas APIs nativas limitadas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BLOQUE 4: DETALLES TÉCNICOS ESPECÍFICOS ==================== -->
+
+    <!-- Slide 14: Gestión de Tareas -->
+    <div class="slide">
+      <h1>Módulo: Gestión de Tareas</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>Estructura de Datos</h3>
+            <pre><code><span class="keyword">const</span> task = {
+  id: <span class="string">'1708123456789'</span>,
+  title: <span class="string">'Completar informe'</span>,
+  type: <span class="string">'obligatory'</span> | <span class="string">'optional'</span>,
+  completed: <span class="keyword">false</span>,
+  createdAt: <span class="string">'2026-02-17T...'</span>,
+  completedAt: <span class="keyword">null</span>,
+  notes: [
+    { id, content, createdAt }
+  ]
+};</code></pre>
+
+            <h3 style="margin-top: 20px;">Diferenciación Visual</h3>
+            <div style="display: flex; gap: 20px; margin-top: 10px;">
+              <div style="padding: 10px 20px; background: rgba(231,76,60,0.2); border-left: 4px solid #E74C3C; border-radius: 4px;">
+                <strong style="color: #E74C3C;">Obligatoria</strong>
+              </div>
+              <div style="padding: 10px 20px; background: rgba(52,152,219,0.2); border-left: 4px solid #3498DB; border-radius: 4px;">
+                <strong style="color: #3498DB;">Opcional</strong>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>Redux Slice (RF01-RF26)</h3>
+            <pre><code><span class="comment">// Reducers principales</span>
+<span class="property">addTask</span>(state, {title, type})
+<span class="property">toggleTaskComplete</span>(state, taskId)
+<span class="property">editTask</span>(state, {id, title, type})
+<span class="property">deleteTask</span>(state, taskId)
+<span class="property">setFilter</span>(state, filter)
+<span class="property">addNote</span>(state, {taskId, content})
+
+<span class="comment">// Selectors memoizados</span>
+<span class="function">selectFilteredTasks</span> <span class="comment">// Por tipo</span>
+<span class="function">selectPendingTasks</span>  <span class="comment">// No completadas</span>
+<span class="function">selectTaskCounts</span>    <span class="comment">// Estadísticas</span></code></pre>
+
+            <div class="card small" style="margin-top: 20px;">
+              <strong>Persistencia:</strong> AsyncStorage con key <code>@adhd_app:tasks</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 15: Metas Semanales -->
+    <div class="slide">
+      <h1>Módulo: Metas Semanales</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>Estructura de Meta</h3>
+            <pre><code><span class="keyword">const</span> goal = {
+  id: <span class="string">'goal_123'</span>,
+  title: <span class="string">'Terminar proyecto'</span>,
+  weekType: <span class="string">'rolling'</span> | <span class="string">'fixed'</span>,
+  startDate: <span class="string">'2026-02-17'</span>,
+  endDate: <span class="string">'2026-02-24'</span>,
+  status: <span class="string">'active'</span>,
+  taskIds: [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>],
+  <span class="property">progressPercentage</span>: <span class="number">66</span>,
+  <span class="property">pointsEarned</span>: <span class="number">150</span>,
+  bonusApplied: <span class="keyword">false</span>
+};</code></pre>
+          </div>
+
+          <div>
+            <h3>🎮 Sistema de Gamificación</h3>
+            <div class="card card-green small">
+              <ul>
+                <li><strong>+10 pts</strong> por tarea completada</li>
+                <li><strong>+50 pts</strong> bonus al completar meta</li>
+                <li><strong>Progreso automático</strong> calculado</li>
+                <li>Historial de metas archivadas</li>
+              </ul>
+            </div>
+
+            <h3 style="margin-top: 15px;">Tipos de Semana</h3>
+            <div class="card small">
+              <p><strong>Rolling:</strong> 7 días desde hoy</p>
+              <p><strong>Fixed:</strong> Lunes a domingo</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>Cálculo de Progreso</h3>
+          <pre><code><span class="function">updateGoalProgress</span>: (state, action) => {
+  <span class="keyword">const</span> { goalId, completedTaskIds } = action.payload;
+  <span class="keyword">const</span> goal = state.goals.find(g => g.id === goalId);
+
+  goal.completedTasks = goal.taskIds.filter(
+    id => completedTaskIds.includes(id)
+  ).length;
+
+  goal.<span class="property">progressPercentage</span> = Math.round(
+    (goal.completedTasks / goal.totalTasks) * <span class="number">100</span>
+  );
+
+  <span class="comment">// Auto-completar si 100%</span>
+  <span class="keyword">if</span> (goal.progressPercentage === <span class="number">100</span>) {
+    goal.status = <span class="string">'completed'</span>;
+  }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 16: Ruido Rosa/Marrón - Generación -->
+    <div class="slide">
+      <h1>Ruido Rosa/Marrón: Base Científica</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <div class="card" style="margin-bottom: 20px;">
+              <h3>🔊 Ruido Rosa</h3>
+              <p><strong>Característica:</strong> -3 dB/octava</p>
+              <p>Energía igual por octava, frecuencias equilibradas</p>
+              <div class="diagram small" style="margin-top: 10px;">
+Frecuencia:  Baja ████████ Alta
+Energía:     ████████████████
+             ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+             Decae gradualmente
+              </div>
+              <p class="small" style="margin-top: 10px;">Algoritmo: Paul Kellet (1995)</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="card" style="margin-bottom: 20px;">
+              <h3>🔊 Ruido Marrón</h3>
+              <p><strong>Característica:</strong> -6 dB/octava</p>
+              <p>Énfasis en graves, "movimiento browniano"</p>
+              <div class="diagram small" style="margin-top: 10px;">
+Frecuencia:  Baja ████████ Alta
+Energía:     ████████████
+             ████████
+             ████
+             Decae rápidamente
+              </div>
+              <p class="small" style="margin-top: 10px;">Algoritmo: Voss-McCartney</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-green">
+          <h3>💡 Implementación en TDAH Focus</h3>
+          <p>Los archivos de audio fueron <strong>pre-generados</strong> con alta calidad (44.1kHz, 16-bit) usando los algoritmos mencionados, garantizando reproducción eficiente sin procesamiento en tiempo real.</p>
+          <pre><code><span class="keyword">const</span> SOUND_FILES = {
+  pink: require(<span class="string">'../assets/sounds/pink_noise.mp3'</span>),
+  brown: require(<span class="string">'../assets/sounds/brown_noise.mp3'</span>)
+};</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 17: Ruido Rosa/Marrón - Reproducción -->
+    <div class="slide">
+      <h1>Ruido Rosa/Marrón: Implementación</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>Configuración de Audio</h3>
+            <pre><code><span class="comment">// soundService.js</span>
+<span class="keyword">await</span> Audio.setAudioModeAsync({
+  <span class="property">allowsRecordingIOS</span>: <span class="keyword">false</span>,
+  <span class="property">staysActiveInBackground</span>: <span class="keyword">true</span>,
+  <span class="property">playsInSilentModeIOS</span>: <span class="keyword">true</span>,
+  <span class="property">shouldDuckAndroid</span>: <span class="keyword">true</span>,
+});
+
+<span class="comment">// Cargar sonido con bucle</span>
+<span class="keyword">const</span> { sound } = <span class="keyword">await</span>
+  Audio.Sound.createAsync(
+    SOUND_FILES[soundType],
+    {
+      shouldPlay: <span class="keyword">false</span>,
+      <span class="property">isLooping</span>: <span class="keyword">true</span>,
+      volume: <span class="number">0.5</span>
+    },
+    onPlaybackStatusUpdate
+  );</code></pre>
+          </div>
+
+          <div>
+            <h3>Requisitos Funcionales</h3>
+            <div class="card small">
+              <ul>
+                <li><strong>RF31:</strong> Seleccionar ambiente</li>
+                <li><strong>RF32:</strong> Reproducción en bucle</li>
+                <li><strong>RF33:</strong> Pausar reproducción</li>
+                <li><strong>RF34:</strong> Detener reproducción</li>
+                <li><strong>RF35:</strong> Ajustar volumen 0-100%</li>
+                <li><strong>RF36:</strong> Reproducción en segundo plano</li>
+              </ul>
+            </div>
+
+            <h3 style="margin-top: 20px;">Control de Volumen</h3>
+            <pre><code><span class="keyword">export async function</span> <span class="function">setVolume</span>(vol) {
+  <span class="keyword">const</span> clamped = Math.max(<span class="number">0</span>,
+    Math.min(<span class="number">1</span>, vol));
+  <span class="keyword">await</span> soundObject
+    .setVolumeAsync(clamped);
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 18: Conexión LLM - Arquitectura -->
+    <div class="slide">
+      <h1>Asistente IA: Arquitectura</h1>
+      <div class="content-flex">
+        <div class="diagram" style="margin-bottom: 15px; font-size: 0.75em;">
+┌──────────────────┐    Petición HTTP   ┌──────────────────┐   Llamada API    ┌──────────────────┐
+│                  │ ─────────────────► │                  │ ───────────────► │                  │
+│  📱 Aplicación   │                    │  🖥️ Servidor     │                  │   🤖 Groq API    │
+│  React Native    │ ◄───────────────── │  Render.com      │ ◄─────────────── │   Llama 3 70B    │
+│                  │   Respuesta JSON   │  (Node.js)       │   Respuesta LLM  │                  │
+└──────────────────┘                    └──────────────────┘                  └──────────────────┘
+         │
+         │ Si falla conexión
+         ▼
+┌──────────────────┐
+│  📚 Base de      │
+│  Conocimiento    │  ← Respaldo 100% sin conexión con respuestas pre-definidas
+│  Local (TDAH)    │
+└──────────────────┘
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>🔒 Privacidad: Solo Metadatos</h3>
+            <pre><code><span class="keyword">const</span> sanitizedContext = {
+  tasks: tasks.map(t => ({
+    isMandatory: t.isMandatory,
+    completed: t.completed,
+    <span class="comment">// ❌ NO incluye t.title</span>
+    <span class="comment">// ❌ NO incluye t.notes</span>
+  })),
+  pomodoroSessions: <span class="number">5</span>,
+  hasPendingTasks: <span class="keyword">true</span>
+};</code></pre>
+          </div>
+
+          <div class="card card-green">
+            <h3>⚡ Configuración</h3>
+            <pre><code><span class="keyword">const</span> API_URL =
+  <span class="string">'https://tdah-focus.onrender.com/api/chat'</span>;
+
+<span class="keyword">const</span> API_TIMEOUT = <span class="number">60000</span>; <span class="comment">// 60s</span>
+<span class="comment">// Suficiente para arranque en frío de Render</span>
+
+<span class="comment">// Respaldo automático si falla</span>
+<span class="keyword">catch</span> (error) {
+  <span class="keyword">return</span> <span class="function">processMessageLocal</span>(msg);
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 19: Conexión LLM - Prompt Engineering -->
+    <div class="slide">
+      <h1>Asistente IA: Especialización TDAH</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>Detección de Patrones</h3>
+            <pre><code><span class="keyword">const</span> PATTERNS = {
+  <span class="property">PARALYSIS</span>:
+    /no sé (por dónde|qué) empezar/i,
+  <span class="property">FOCUS_LOSS</span>:
+    /distraído|perdí (el )?foco/i,
+  <span class="property">INDECISION</span>:
+    /qué (hago|tarea)|cuál priorizo/i,
+  <span class="property">MOTIVATION</span>:
+    /sin ganas|desmotivado/i
+};
+
+<span class="keyword">function</span> <span class="function">detectPattern</span>(message) {
+  <span class="keyword">for</span> (<span class="keyword">const</span> [name, regex]
+       <span class="keyword">of</span> Object.entries(PATTERNS)) {
+    <span class="keyword">if</span> (regex.test(message))
+      <span class="keyword">return</span> name;
+  }
+  <span class="keyword">return</span> <span class="keyword">null</span>;
+}</code></pre>
+          </div>
+
+          <div>
+            <h3>Respuestas Contextuales</h3>
+            <pre><code><span class="comment">// Ejemplo: Parálisis Ejecutiva</span>
+<span class="keyword">if</span> (pattern === <span class="string">'PARALYSIS'</span>) {
+  response = <span class="string">`
+📋 TU SITUACIÓN ACTUAL:
+Tienes </span>${obligatoryTasks}<span class="string"> tarea(s)
+obligatoria(s) pendientes.
+
+✅ ACCIÓN INMEDIATA:
+1. Elige la más corta o urgente
+2. Divídela en pasos de 5 min
+3. Haz un Pomodoro de 25 min
+`</span>;
+}</code></pre>
+
+            <div class="card card-purple small" style="margin-top: 15px;">
+              <strong>Sistema experto local</strong> con estrategias cognitivo-conductuales específicas para TDAH
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>Transiciones Con conexión ↔ Sin conexión</h3>
+          <p>El sistema notifica al usuario automáticamente cuando cambia el estado de conexión, manteniendo una experiencia fluida.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BLOQUE 5: SEGURIDAD Y CALIDAD ==================== -->
+
+    <!-- Slide 20: Privacidad -->
+    <div class="slide">
+      <h1>Privacidad y Seguridad</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <div class="card card-green" style="margin-bottom: 20px;">
+              <h3>🔒 Principios de Privacidad</h3>
+              <ul>
+                <li><strong>Solo metadatos</strong> enviados a servidor</li>
+                <li><strong>Sin PII</strong> (Personally Identifiable Info)</li>
+                <li><strong>Almacenamiento 100% local</strong></li>
+                <li><strong>Sin tracking</strong> ni analytics</li>
+                <li><strong>Sin registro</strong> obligatorio</li>
+              </ul>
+            </div>
+
+            <div class="card card-red">
+              <h3>❌ Nunca se envía</h3>
+              <ul>
+                <li>Títulos de tareas</li>
+                <li>Contenido de notas</li>
+                <li>Nombres o emails</li>
+                <li>Ubicación</li>
+                <li>Identificadores de dispositivo</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="card" style="margin-bottom: 20px;">
+              <h3>✅ Se envía (solo LLM)</h3>
+              <ul>
+                <li>Conteo de tareas por tipo</li>
+                <li>Estado completado/pendiente</li>
+                <li>Número de sesiones Pomodoro</li>
+                <li>Mensaje del usuario al asistente</li>
+              </ul>
+            </div>
+
+            <h3>Almacenamiento Local</h3>
+            <pre><code><span class="keyword">const</span> STORAGE_KEYS = {
+  TASKS: <span class="string">'@adhd_app:tasks'</span>,
+  POMODORO_HISTORY:
+    <span class="string">'@adhd_app:pomodoro_history'</span>,
+  SETTINGS: <span class="string">'@adhd_app:settings'</span>,
+  WEEKLY_GOALS:
+    <span class="string">'@adhd_app:weekly_goals'</span>
+};
+<span class="comment">// Todo en AsyncStorage del dispositivo</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 21: Accesibilidad -->
+    <div class="slide">
+      <h1>Accesibilidad (WCAG 2.1 AA)</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>Estándares Implementados</h3>
+            <pre><code><span class="comment">// constants.js</span>
+<span class="keyword">export const</span> UI = {
+  <span class="property">MAX_ACTIONS_PER_SCREEN</span>: <span class="number">3</span>,
+  <span class="property">MIN_FONT_SIZE</span>: <span class="number">16</span>,        <span class="comment">// pt</span>
+  <span class="property">MIN_TOUCH_TARGET</span>: <span class="number">44</span>,    <span class="comment">// pt</span>
+  <span class="property">FEEDBACK_DELAY</span>: <span class="number">200</span>,     <span class="comment">// ms</span>
+  <span class="property">ANIMATION_DURATION</span>: <span class="number">300</span>, <span class="comment">// ms</span>
+};
+
+<span class="keyword">export const</span> CONTRAST_RATIOS = {
+  <span class="property">NORMAL_TEXT</span>: <span class="number">4.5</span>,  <span class="comment">// :1</span>
+  <span class="property">LARGE_TEXT</span>: <span class="number">3.0</span>,   <span class="comment">// :1</span>
+};</code></pre>
+          </div>
+
+          <div>
+            <h3>Checklist de Cumplimiento</h3>
+            <div class="card">
+              <ul class="checklist small">
+                <li>Contraste 4.5:1 (texto normal)</li>
+                <li>Fuentes mínimo 16pt</li>
+                <li>Área táctils 44x44pt mínimo</li>
+                <li>Colores diferenciados por tipo</li>
+                <li>Etiquetas claras en botones</li>
+                <li>Feedback visual &lt;200ms</li>
+                <li>Animaciones &lt;300ms</li>
+                <li>Máximo 3 acciones principales</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-purple" style="margin-top: 25px;">
+          <h3>🧠 Diseño para TDAH</h3>
+          <p>Las restricciones de accesibilidad también benefician a usuarios con TDAH al <strong>reducir la sobrecarga cognitiva</strong>, <strong>minimizar distracciones visuales</strong> y <strong>simplificar la toma de decisiones</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 22: Requerimientos -->
+    <div class="slide">
+      <h1>Requerimientos del Sistema</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>Requerimientos Funcionales</h3>
+            <div class="card">
+              <table class="small">
+                <tr><th>Módulo</th><th>RFs</th></tr>
+                <tr><td>Tareas</td><td>RF01-RF10</td></tr>
+                <tr><td>Notas</td><td>RF11-RF14</td></tr>
+                <tr><td>Pomodoro</td><td>RF15-RF25</td></tr>
+                <tr><td>Metas Semanales</td><td>RF26-RF30</td></tr>
+                <tr><td>Ambientes Sonoros</td><td>RF31-RF36</td></tr>
+                <tr><td>Asistente IA</td><td>RF37-RF41</td></tr>
+                <tr><th>Total</th><th>41 RFs</th></tr>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <h3>Requerimientos No Funcionales</h3>
+            <div class="card card-green small">
+              <ul>
+                <li><strong>RNF01:</strong> Máx. 3 acciones/pantalla</li>
+                <li><strong>RNF02:</strong> Fuente mínima 16pt</li>
+                <li><strong>RNF03:</strong> Contraste WCAG AA</li>
+                <li><strong>RNF04:</strong> Feedback &lt;200ms</li>
+                <li><strong>RNF07:</strong> Área táctil 44x44pt</li>
+              </ul>
+            </div>
+
+            <div class="card card-red small" style="margin-top: 15px;">
+              <h4>RNFs Críticos</h4>
+              <ul>
+                <li><strong>100% Offline:</strong> Funciona sin internet</li>
+                <li><strong>&lt;3s carga:</strong> Pantalla inicial</li>
+                <li><strong>Privacidad:</strong> Sin PII enviado</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BLOQUE 6: DEMOSTRACIÓN ==================== -->
+
+    <!-- Slide 23: Flujo Crear Tarea -->
+    <div class="slide">
+      <h1>Demo: Crear una Tarea</h1>
+      <div class="content-flex">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>Abrir pantalla de Tareas</strong>
+            <p class="small">Navegación desde barra inferior → icono "Tareas"</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <div>
+            <strong>Presionar botón "+" (Nueva Tarea)</strong>
+            <p class="small">Área táctil 56x56pt, claramente visible</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <div>
+            <strong>Ingresar título de la tarea</strong>
+            <p class="small">Campo de texto con texto de ejemplo descriptivo</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">4</div>
+          <div>
+            <strong>Seleccionar tipo: Obligatoria u Opcional</strong>
+            <p class="small">
+              <span style="color: #E74C3C;">● Obligatoria</span> = Prioridad alta, color rojo |
+              <span style="color: #3498DB;">● Opcional</span> = Prioridad normal, color azul
+            </p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">5</div>
+          <div>
+            <strong>Guardar tarea</strong>
+            <p class="small">Feedback visual inmediato, persistencia en AsyncStorage</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 25px;">
+          <p><strong>Resultado:</strong> Tarea aparece en lista, ordenada por tipo (obligatorias primero), lista para asociar a Pomodoro o Meta Semanal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 24: Flujo Sesión Pomodoro -->
+    <div class="slide">
+      <h1>Demo: Sesión Pomodoro</h1>
+      <div class="content-flex">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>Ir a pantalla Pomodoro</strong>
+            <p class="small">Timer central muestra 25:00 en estado IDLE</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <div>
+            <strong>Seleccionar tarea para trabajar</strong>
+            <p class="small">Lista desplegable muestra tareas pendientes (obligatorias primero)</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <div>
+            <strong>Iniciar sesión (botón "Comenzar")</strong>
+            <p class="small">Timer cambia a <span style="color: #E74C3C;">ROJO</span> = modo trabajo, cuenta regresiva activa</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">4</div>
+          <div>
+            <strong>Completar 25 minutos de trabajo</strong>
+            <p class="small">Notificación push al completar, sesión guardada en historial</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">5</div>
+          <div>
+            <strong>Descanso automático (5 min)</strong>
+            <p class="small">Timer cambia a <span style="color: #27AE60;">VERDE</span> = modo descanso</p>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 20px;">
+          <div class="card small">
+            <strong>Estados del Timer:</strong>
+            <p><span style="color: #95a5a6;">⬤ IDLE</span> → <span style="color: #E74C3C;">⬤ WORKING</span> → <span style="color: #27AE60;">⬤ BREAK</span> → <span style="color: #95a5a6;">⬤ IDLE</span></p>
+          </div>
+          <div class="card small">
+            <strong>Pausar/Reanudar:</strong>
+            <p><span style="color: #f39c12;">⬤ PAUSED</span> guarda estado anterior para restaurar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 25: Flujo Ambientes Sonoros -->
+    <div class="slide">
+      <h1>Demo: Ambientes Sonoros</h1>
+      <div class="content-flex">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <div>
+            <strong>Ir a pantalla Sonidos</strong>
+            <p class="small">Muestra dos opciones: Ruido Rosa y Ruido Marrón</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <div>
+            <strong>Seleccionar tipo de ruido</strong>
+            <p class="small">Tarjetas con descripción científica de cada tipo</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <div>
+            <strong>Reproducción automática</strong>
+            <p class="small">Audio comienza en bucle continuo al seleccionar</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">4</div>
+          <div>
+            <strong>Ajustar volumen</strong>
+            <p class="small">Control deslizante de 0% a 100%, valor por defecto 50%</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="step-number">5</div>
+          <div>
+            <strong>Continúa en segundo plano</strong>
+            <p class="small">Audio sigue reproduciéndose al cambiar de pantalla o minimizar app</p>
+          </div>
+        </div>
+
+        <div class="card card-green" style="margin-top: 20px;">
+          <h3>💡 Uso Combinado</h3>
+          <p>El usuario puede tener <strong>ruido de fondo activo</strong> mientras usa el <strong>timer Pomodoro</strong>, creando un ambiente de trabajo óptimo para TDAH.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 26: Flujo Asistente -->
+    <div class="slide">
+      <h1>Demo: Asistente Virtual</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <div class="flow-step">
+              <div class="step-number">1</div>
+              <div>
+                <strong>Ir a pantalla Chat</strong>
+                <p class="small">Interfaz de chat con mensaje de bienvenida</p>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong>Escribir pregunta o problema</strong>
+                <p class="small">"No sé por dónde empezar con mis tareas"</p>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong>Procesamiento (con/sin conexión)</strong>
+                <p class="small">Indicador de "escribiendo..." mientras procesa</p>
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="step-number">4</div>
+              <div>
+                <strong>Respuesta contextual</strong>
+                <p class="small">Incluye datos de tareas del usuario (sin revelar contenido)</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <h3>Ejemplo de Interacción</h3>
+              <div style="background: #16213e; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                <p style="color: #3498DB; margin-bottom: 10px;"><strong>Usuario:</strong></p>
+                <p style="margin-bottom: 15px;">"Estoy bloqueado, no sé qué hacer primero"</p>
+
+                <p style="color: #27AE60; margin-bottom: 10px;"><strong>Asistente:</strong></p>
+                <p class="small">📋 <strong>Tu situación:</strong> Tienes 3 tareas obligatorias pendientes.</p>
+                <p class="small" style="margin-top: 10px;">✅ <strong>Acción inmediata:</strong></p>
+                <p class="small">1. Elige la más corta</p>
+                <p class="small">2. Divídela en pasos de 5 min</p>
+                <p class="small">3. Inicia un Pomodoro de 25 min</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BLOQUE 7: CIERRE ==================== -->
+
+    <!-- Slide 27: Logros del Proyecto -->
+    <div class="slide">
+      <h1>Logros del Proyecto</h1>
+      <div class="content-flex">
+        <div class="grid-2">
+          <div>
+            <h3>✅ Funcionalidades Implementadas</h3>
+            <div class="card card-green">
+              <ul class="checklist">
+                <li>Gestión de tareas con clasificación</li>
+                <li>Sistema de notas por tarea</li>
+                <li>Timer Pomodoro completo</li>
+                <li>Metas semanales con gamificación</li>
+                <li>Ambientes sonoros (rosa/marrón)</li>
+                <li>Asistente IA con respaldo sin conexión</li>
+                <li>Historial de sesiones Pomodoro</li>
+                <li>Notificaciones push</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3>📊 Métricas Finales</h3>
+            <div class="card">
+              <table>
+                <tr><td><strong>Requerimientos Funcionales</strong></td><td>41/41 ✓</td></tr>
+                <tr><td><strong>Requerimientos No Funcionales</strong></td><td>10/10 ✓</td></tr>
+                <tr><td><strong>Accesibilidad WCAG</strong></td><td>AA ✓</td></tr>
+                <tr><td><strong>Cobertura sin conexión</strong></td><td>100%</td></tr>
+                <tr><td><strong>Líneas de código</strong></td><td>~5,500</td></tr>
+              </table>
+            </div>
+
+            <div class="card card-purple" style="margin-top: 15px;">
+              <h4>Base Científica</h4>
+              <p class="small">Todas las funcionalidades están respaldadas por estudios revisados por pares sobre intervenciones no farmacológicas para TDAH.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 28: Trabajo Futuro -->
+    <div class="slide">
+      <h1>Trabajo Futuro</h1>
+      <div class="content-flex">
+        <div class="grid-3">
+          <div class="card">
+            <h3>📱 Plataformas</h3>
+            <ul class="small">
+              <li>Publicación en App Store (iOS)</li>
+              <li>Publicación en Play Store (Android)</li>
+              <li>Versión web (PWA)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🔊 Más Ambientes</h3>
+            <ul class="small">
+              <li>Ruido blanco</li>
+              <li>Sonidos de naturaleza</li>
+              <li>Binaural beats</li>
+              <li>Mezclas personalizadas</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>📊 Analytics (Opt-in)</h3>
+            <ul class="small">
+              <li>Patrones de productividad</li>
+              <li>Mejores horarios</li>
+              <li>Sonidos más efectivos</li>
+              <li>Reportes semanales</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top: 25px;">
+          <div class="card card-green">
+            <h3>🤖 Mejoras del Asistente</h3>
+            <ul class="small">
+              <li>Más patrones de detección</li>
+              <li>Recordatorios proactivos</li>
+              <li>Integración con calendario</li>
+              <li>Sugerencias basadas en historial</li>
+            </ul>
+          </div>
+
+          <div class="card card-purple">
+            <h3>🎯 Gamificación Avanzada</h3>
+            <ul class="small">
+              <li>Logros desbloqueables</li>
+              <li>Rachas de productividad</li>
+              <li>Niveles de experiencia</li>
+              <li>Recompensas visuales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 29: Conclusiones -->
+    <div class="slide slide-title" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+      <div class="logo">🎓</div>
+      <h1 style="border: none; font-size: 2.5em;">Conclusiones</h1>
+
+      <div style="max-width: 900px; text-align: left; margin: 30px auto;">
+        <div class="card" style="margin-bottom: 20px;">
+          <p style="font-size: 1.2em;">
+            Se desarrolló exitosamente un <strong>prototipo funcional</strong> de aplicación móvil que integra
+            <span class="highlight-blue">intervenciones no farmacológicas basadas en evidencia científica</span>
+            para asistir a adultos con TDAH.
+          </p>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 30px;">
+          <div class="centered">
+            <span class="badge badge-green">5 Módulos</span>
+            <p class="small">Funcionalidades completas</p>
+          </div>
+          <div class="centered">
+            <span class="badge">41 RFs</span>
+            <p class="small">100% implementados</p>
+          </div>
+          <div class="centered">
+            <span class="badge badge-blue">WCAG AA</span>
+            <p class="small">Accesibilidad verificada</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info" style="margin-top: 30px;">
+        <h3 style="color: #E74C3C; margin-bottom: 15px;">Agradecimientos</h3>
+        A la <strong>Lic. María Victoria Huerta</strong> por su guía como tutora<br>
+        A <strong>Universidad Siglo 21</strong> por la formación recibida<br>
+        A todos quienes apoyaron este proyecto
+      </div>
+
+      <div style="margin-top: 40px;">
+        <p style="font-size: 1.5em; color: #3498DB;"><strong>¿Preguntas?</strong></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <button id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+    <button id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+  </div>
+
+  <!-- Counter -->
+  <div class="counter">
+    <span id="current">1</span> / <span id="total">29</span>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progress = document.getElementById('progress');
+    const currentSpan = document.getElementById('current');
+    const totalSpan = document.getElementById('total');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    totalSpan.textContent = totalSlides;
+
+    function showSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+
+      // Update progress
+      progress.style.width = ((currentSlide + 1) / totalSlides * 100) + '%';
+      currentSpan.textContent = currentSlide + 1;
+
+      // Update buttons
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides - 1;
+    }
+
+    function changeSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        if (currentSlide < totalSlides - 1) changeSlide(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        if (currentSlide > 0) changeSlide(-1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        showSlide(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        showSlide(totalSlides - 1);
+      } else if (e.key === 'f' || e.key === 'F11') {
+        e.preventDefault();
+        toggleFullscreen();
+      }
+    });
+
+    // Click navigation (click on right half = next, left half = previous)
+    document.querySelector('.slides-container').addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON') return;
+      const clickX = e.clientX;
+      const windowWidth = window.innerWidth;
+
+      if (clickX > windowWidth * 0.7 && currentSlide < totalSlides - 1) {
+        changeSlide(1);
+      } else if (clickX < windowWidth * 0.3 && currentSlide > 0) {
+        changeSlide(-1);
+      }
+    });
+
+    // Fullscreen toggle
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0 && currentSlide < totalSlides - 1) {
+          changeSlide(1); // Swipe left = next
+        } else if (diff < 0 && currentSlide > 0) {
+          changeSlide(-1); // Swipe right = previous
+        }
+      }
+    }
+
+    // Initialize
+    showSlide(0);
+  </script>
+</body>
+</html>
